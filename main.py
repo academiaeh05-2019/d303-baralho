@@ -1,7 +1,6 @@
-from classes import Carta, Baralho
+from classes import Interface
 
-baralho = Baralho() 
+interface = Interface()
 
-print(baralho.sortear())
-print(baralho.sortear())
-print(baralho.sortear())
+while interface.continuar_rodada():
+  interface.jogar_rodada()

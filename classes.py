@@ -28,9 +28,7 @@ class Carta():
 
 class Baralho():
   def __init__(self):
-    
     self.cartas = []
-    
     
     for naipe in NAIPES:
       for rank in RANKS:
@@ -56,6 +54,23 @@ class Baralho():
     numero_sorteado = randint(0, len(self.cartas)-1)
     return self.cartas.pop(numero_sorteado)
 
+class Jogo21():
+  def __init__(self):
+    self.baralho = Baralho()
+    self.pontuacao = 0
 
+  def jogar_primeira_rodada(self):
+    carta1 = self.baralho.sortear()
+    carta2 = self.baralho.sortear()
+    self.pontuacao = carta1.valor + carta2.valor
 
+    return [carta1, carta2]
 
+  def jogar_rodada(self):      
+    carta = self.baralho.sortear()
+    self.pontuacao += carta.valor
+
+    return carta
+
+  def esta_encerrado(self):
+    return self.pontuacao >= 21
